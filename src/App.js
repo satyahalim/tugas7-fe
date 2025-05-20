@@ -8,7 +8,7 @@ import Register from "./components/Register";
 
 function App() {
   return (
-    <BrowserRouter> 
+    <BrowserRouter>
       <div className="min-h-screen bg-gray-100">
         <Routes>
           <Route path="/" element={<Login />} />
@@ -23,7 +23,7 @@ function App() {
             }
           />
           <Route
-            path="/add"
+            path="/noteslist/add"
             element={
               <>
                 <Navbar />
@@ -32,7 +32,7 @@ function App() {
             }
           />
           <Route
-            path="/edit/:id"
+            path="/noteslist/edit/:id"
             element={
               <>
                 <Navbar />

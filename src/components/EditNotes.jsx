@@ -11,32 +11,33 @@ const [content,setContent] = useState("");
 const navigate = useNavigate();
 const {id} = useParams();
 
-useEffect(()=>{
-    getNotesById();
-},[])
+useEffect(() => {
+  const getNotesById = async () => {
+    const response = await axios.get(`${BASE_URL}/notes/${id}`);
+    setTitle(response.data.title);
+    setWriter(response.data.writer);
+    setDate(response.data.date);
+    setContent(response.data.content);
+  };
+  getNotesById();
+}, [id]);
 
 const updateNotes = async (e) =>{
     e.preventDefault()
     try {
-         await axios.put(`${BASE_URL}/edit-notes/${id}`,{
+         await axios.patch(`${BASE_URL}/edit-notes/${id}`,{
             title,
             writer,
             date,
             content
         })
-        navigate("/")
+        navigate("/noteslist")
     } catch (error) {
         console.log(error)
     }
     
 }
-  const getNotesById = async ()=>{
-    const response = await axios.get(`${BASE_URL}/notes/${id}`);
-    setTitle(response.data.title)
-    setWriter(response.data.writer)
-    setDate(response.data.date)
-    setContent(response.data.content)
-  }
+  
 
   return (
    <div className="columns mt-5 is-centered">

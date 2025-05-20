@@ -19,7 +19,7 @@ const saveNotes = async (e) =>{
             date,
             content
         });
-        navigate("/")
+        navigate("/noteslist")
     } catch (error) {
         console.log(error)
     }
